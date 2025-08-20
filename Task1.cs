@@ -1,5 +1,5 @@
 ﻿
-/*using System;
+using System;
 namespace task1
 {
     class program1
@@ -13,30 +13,39 @@ namespace task1
             int w = 0;
             int l = 0;
             bool pw = false;
-            for (int i = 0; i <= statment.Length-1; i++) 
+
+            if (statment.Length != 0)
             {
-                char c = statment[i];
-                if (char.IsWhiteSpace(c))
+                for (int i = 0; i <= statment.Length - 1; i++)
                 {
-                    if (!pw)
+                    char c = statment[i];
+                    if (char.IsWhiteSpace(c))
                     {
-                        w++;
-                        pw = true;
+                        if (!pw)
+                        {
+                            w++;
+                            pw = true;
+                        }
                     }
-                }
 
-                else 
-                {
-                    if (char.IsLetter(c))
+                    else
                     {
-                        l++;
+                        if (char.IsLetter(c))
+                        {
+                            l++;
+                        }
+                        pw = false;
                     }
-                    pw = false;
-                }
 
+                }
+                Console.WriteLine($"words: {w + 1}");
+                Console.WriteLine($"letters:{l}");
             }
-            Console.WriteLine($"words: {w+1}");
-            Console.WriteLine($"letters:{l}");
+            else
+            {
+                Console.WriteLine($"words: {w}");
+                Console.WriteLine($"letters:{l}");
+            }
         }
     }
-}*/
+}

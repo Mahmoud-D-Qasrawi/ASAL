@@ -5,34 +5,35 @@ namespace task3
     {
         static void Main(string[] args)
         {
-            string password = "35";
+            const string password = "35";
             int attempts = 3;
             string input = "";
             Console.WriteLine("Pleas enter your password");
-            while (attempts >= 0 && input != password)
+            while (attempts > 0 && input != password)
             {
-                input = Console.ReadLine();
+                input = Console.ReadLine().Trim();
                 if (input == password)
                 {
                     Console.WriteLine("Successful login");
                 }
                 else
                 {
+                    attempts--;
                     if (attempts == 1)
                     {
                         Console.WriteLine("Worng password last attempt left");
-                        attempts--;
+                        
                     }
                     else
                     if (attempts == 0)
                     {
                         Console.WriteLine("All attempts are done");
-                        attempts--;
+
                     }
                     else
                     {
                         Console.WriteLine($"Worng password {attempts} attempts left");
-                        attempts--;
+
                     }
                 }
             }

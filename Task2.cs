@@ -1,40 +1,32 @@
-﻿/*using System;
+﻿using System;
 namespace task2 
 {
     class program2
     {
         static void Main(string[] args) 
         {
-            int x = 0;
-            int y = 0;
-            int g = 0;
+            long x = 0;
+            long y = 0;
+            long g = 0;
             string input = "";
-            Console.WriteLine("Please enter the numerator of the first fraction");
-            input = Console.ReadLine();
-            int a = int.Parse(input);
-            Console.WriteLine("Please enter the denominator of the first fraction");
-            input = Console.ReadLine();
-            int b = int.Parse(input);
+            long a = ReadInt("Please enter the numerator of the first fraction");
+            long b = ReadInt("Please enter the denominator of the first fraction");
             while (b == 0)
             {
                 Console.WriteLine("Invalid input the denominator can't be zero please try again");
-                input = Console.ReadLine();
-                b = int.Parse(input);
+                b = ReadInt("");
             }
+
             Console.WriteLine("Please enter the opreation");
             input = Console.ReadLine();
             char o=char.Parse(input);
-            Console.WriteLine("Please enter the numerator of the second fraction");
-            input = Console.ReadLine();
-            int c = int.Parse(input);
-            Console.WriteLine("Please enter the denominator of the second fraction");
-            input = Console.ReadLine();
-            int d = int.Parse(input);
+
+            long c = ReadInt("Please enter the numerator of the second fraction");
+            long d = ReadInt("Please enter the denominator of the second fraction");
             while (d == 0)
             {
                 Console.WriteLine("Invalid input the denominator can't be zero please try again");
-                input = Console.ReadLine();
-                d = int.Parse(input);
+                d = ReadInt("");
             }
 
 
@@ -67,7 +59,13 @@ namespace task2
                     x = (a * d);
                     y = (b * c);
                     g = GCF(x, y);
-                    Console.WriteLine($"The result is {x / g}/{y / g}");
+                    if (g == 0)
+                    {
+                        Console.WriteLine("Math error: cannot simplify (GCF = 0).");
+                        break;
+                    }
+                    else {
+                        Console.WriteLine($"The result is {x / g}/{y / g}"); }
                     break;
                 default:
                     Console.WriteLine("Invalid Operation");
@@ -75,11 +73,11 @@ namespace task2
 
             }
         }
-        static int GCF(int x, int y)
+        static long GCF(long x, long y)
         {
-            int r = 1;
-            int b;
-            int s;
+            long r = 1;
+            long b;
+            long s;
             if (x < 0) x = x * -1;
             if (y < 0) y = y * -1;
             if (x > y)
@@ -105,5 +103,17 @@ namespace task2
             }
             return b;
         }
+
+        static int ReadInt(string message)
+        {
+            int value;
+            Console.WriteLine(message);
+            while (!int.TryParse(Console.ReadLine(), out value))
+            {
+                Console.WriteLine("Invalid input! Please enter a number:");
+            }
+            return value;
+        }
+
     }
-}*/
+}
